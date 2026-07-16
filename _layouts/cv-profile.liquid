@@ -1,0 +1,117 @@
+---
+layout: default
+---
+{% assign cv = site.data.cv.cv %}
+
+<main class="jp-cv">
+  <header class="jp-cv-hero">
+    <p class="jp-eyebrow">Curriculum Vitae</p>
+    <h1>{{ cv.name }}</h1>
+    <p class="jp-cv-role">{{ cv.label }} · KAIST</p>
+    <p class="jp-cv-summary">{{ cv.summary }}</p>
+
+    <nav class="jp-social-links" aria-label="Academic and contact links">
+      <a
+        href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}&amp;hl=en"
+        aria-label="Google Scholar"
+        title="Google Scholar"
+      >
+        <i class="ai ai-google-scholar" aria-hidden="true"></i>
+      </a>
+      <a href="https://github.com/{{ site.data.socials.github_username }}" aria-label="GitHub" title="GitHub">
+        <i class="fa-brands fa-github" aria-hidden="true"></i>
+      </a>
+      <a
+        href="{{ site.data.socials.linkedin_url }}"
+        aria-label="LinkedIn"
+        title="LinkedIn"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+      </a>
+      <a href="mailto:{{ site.data.socials.email }}" aria-label="Email" title="{{ site.data.socials.email }}">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+      </a>
+    </nav>
+  </header>
+
+  <section class="jp-cv-section" aria-labelledby="cv-education">
+    <h2 id="cv-education">Education</h2>
+    <div class="jp-cv-list">
+      {% for item in cv.education %}
+        <article class="jp-cv-item">
+          <div class="jp-cv-item-main">
+            <h3>
+              <a href="{{ item.url }}">{{ item.institution }}</a>
+            </h3>
+            <p class="jp-cv-item-role">{{ item.degree }}</p>
+            {% if item.details %}
+              <ul>
+                {% for detail in item.details %}
+                  <li>{{ detail }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+          <div class="jp-cv-item-meta">
+            <span>{{ item.dates }}</span>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="jp-cv-section" aria-labelledby="cv-experience">
+    <h2 id="cv-experience">Research Experience</h2>
+    <div class="jp-cv-list">
+      {% for item in cv.experience %}
+        <article class="jp-cv-item">
+          <div class="jp-cv-item-main">
+            <h3>{{ item.organization }}</h3>
+            <p class="jp-cv-item-role">{{ item.role }}</p>
+          </div>
+          <div class="jp-cv-item-meta">
+            <span>{{ item.dates }}</span>
+            {% if item.location -%}
+              <span>{{ item.location }}</span>
+            {%- endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="jp-cv-section" aria-labelledby="cv-publications">
+    <h2 id="cv-publications">Publications</h2>
+    <div class="jp-publications jp-cv-publications">
+      {% bibliography --group_by none --query @*[selected=true]* %}
+    </div>
+  </section>
+
+  <section class="jp-cv-section" aria-labelledby="cv-honors">
+    <h2 id="cv-honors">Honors</h2>
+    <div class="jp-cv-list">
+      {% for item in cv.honors %}
+        <article class="jp-cv-item jp-cv-honor">
+          <div class="jp-cv-item-main">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.detail }}</p>
+          </div>
+          <div class="jp-cv-item-meta">
+            <span>{{ item.year }}</span>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="jp-cv-section" aria-labelledby="cv-interests">
+    <h2 id="cv-interests">Research Interests</h2>
+    <ul class="jp-interest-list">
+      {% for interest in cv.interests %}
+        <li>{{ interest }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+</main>

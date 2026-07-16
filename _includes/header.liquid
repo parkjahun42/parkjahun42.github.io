@@ -1,0 +1,61 @@
+{% assign home_url = '/' | relative_url %}
+<header class="jp-site-header">
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" aria-label="Primary navigation">
+    <div class="container">
+      <a class="navbar-brand jp-brand" href="{{ home_url }}" aria-label="Jaehyun Park home"> <span>Jaehyun</span> Park </a>
+
+      <button
+        class="navbar-toggler collapsed navbar-toggler-main"
+        type="button"
+        data-nav-toggle="navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav">
+        <ul class="navbar-nav navbar-menu-list flex-nowrap">
+          <li class="nav-item {% if page.permalink == '/' %}active{% endif %}">
+            <a
+              class="nav-link"
+              href="{{ home_url }}#about"
+              {% if page.permalink == '/' %}
+                aria-current="page"
+              {% endif %}
+              >About</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ home_url }}#research">Research</a>
+          </li>
+          <li class="nav-item {% if page.permalink == '/publications/' %}active{% endif %}">
+            <a
+              class="nav-link"
+              href="{{ '/publications/' | relative_url }}"
+              {% if page.permalink == '/publications/' %}
+                aria-current="page"
+              {% endif %}
+              >Publications</a
+            >
+          </li>
+          <li class="nav-item {% if page.permalink == '/cv/' %}active{% endif %}">
+            <a
+              class="nav-link"
+              href="{{ '/cv/' | relative_url }}"
+              {% if page.permalink == '/cv/' %}
+                aria-current="page"
+              {% endif %}
+              >CV</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<script defer src="{{ '/assets/js/site-nav.js' | relative_url | bust_file_cache }}"></script>

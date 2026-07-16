@@ -1,0 +1,75 @@
+{% assign project = include.project %}
+<article class="jp-research-row">
+  <a
+    class="jp-research-media"
+    href="{{ project.website_url }}"
+    aria-label="Open the {{ project.title }} project website"
+  >
+    <span class="jp-media-frame" data-hover-preview>
+      <img
+        class="jp-media-poster"
+        src="{{ project.thumbnail | relative_url }}"
+        alt="{{ project.thumbnail_alt | default: project.title }}"
+        loading="lazy"
+      >
+      {% if project.hover_video %}
+        <video muted loop playsinline preload="metadata" poster="{{ project.thumbnail | relative_url }}" aria-hidden="true">
+          <source src="{{ project.hover_video | relative_url | bust_file_cache }}" type="video/mp4">
+        </video>
+      {% endif %}
+      {% if project.cover_image %}
+        <span class="jp-cover-inset">
+          <img src="{{ project.cover_image | relative_url }}" alt="{{ project.cover_alt }}" loading="lazy">
+          <span>{{ project.cover_label }}</span>
+        </span>
+      {% endif %}
+      <span class="jp-preview-cue">
+        <i class="fa-solid fa-play" aria-hidden="true"></i>
+        <span>Hover to preview</span>
+      </span>
+    </span>
+  </a>
+
+  <div class="jp-research-copy">
+    <div class="jp-project-meta">
+      <span>{{ project.venue }}</span>
+      {% if project.highlight %}
+        <span class="jp-project-highlight">{{ project.highlight }}</span>
+      {% endif %}
+    </div>
+
+    <h3>
+      <a href="{{ project.website_url }}">{{ project.title }}</a>
+    </h3>
+    {% if project.authors %}
+      <p class="jp-project-authors">
+        {{ project.authors | replace: 'Jaehyun Park*', '<strong>Jaehyun Park*</strong>' }}
+      </p>
+    {% endif %}
+    <p class="jp-project-role">{{ project.role }}</p>
+    <p class="jp-project-description">{{ project.description }}</p>
+    {% if project.keywords %}
+      <ul class="jp-project-keywords" aria-label="Research topics">
+        {% for keyword in project.keywords %}
+          <li>{{ keyword }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <div class="jp-project-links" aria-label="{{ project.title }} links">
+      <a href="{{ project.website_url }}">Website</a>
+      {% if project.doi_url %}
+        <a href="{{ project.doi_url }}">DOI</a>
+      {% endif %}
+      {% if project.arxiv_url %}
+        <a href="{{ project.arxiv_url }}">arXiv</a>
+      {% endif %}
+      {% if project.video_url %}
+        <a href="{{ project.video_url }}">Video</a>
+      {% endif %}
+      {% if project.code_url %}
+        <a href="{{ project.code_url }}">Code</a>
+      {% endif %}
+    </div>
+  </div>
+</article>

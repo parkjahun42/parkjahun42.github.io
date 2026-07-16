@@ -1,0 +1,25 @@
+- name: KAIST HOUND
+  image: /assets/img/robots/kaist-hound.jpg
+  alt: KAIST HOUND quadruped robot running across a soccer field
+  width: 1800
+  height: 1013
+  position: 66% center
+
+- name: KAIST HOUND2
+  image: /assets/img/robots/kaist-hound2.jpg
+  alt: KAIST HOUND2 quadruped robot standing on grass
+  width: 518
+  height: 282
+
+- name: KAIST HUMANOID
+  image: /assets/img/robots/kaist-humanoid.jpg
+  alt: KAIST humanoid robot photographed against a black backdrop
+  width: 1200
+  height: 1800
+  fit: contain
+
+- name: Unitree Go1
+  image: /assets/img/robots/unitree-go1.jpg
+  alt: Unitree Go1 quadruped robot climbing outdoor concrete stairs
+  width: 711
+  height: 562
