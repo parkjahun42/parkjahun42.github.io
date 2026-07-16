@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("navbarNav"),a=document.querySelector('[data-nav-toggle="navbarNav"]');e&&a&&e.querySelectorAll("a").forEach(t=>{t.addEventListener("click",()=>{e.classList.remove("show"),a.classList.add("collapsed"),a.setAttribute("aria-expanded","false")})})});
