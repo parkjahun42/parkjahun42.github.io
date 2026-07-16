@@ -102,16 +102,22 @@
 
     const link = preview.closest(".jp-research-media");
     const state = desktopStates.get(preview);
-    preview.addEventListener("pointerenter", (event) => {
-      if (event.pointerType === "touch") return;
-      state.hovered = true;
+    const hoverTarget = link || preview;
+    const setHovered = (hovered) => {
+      state.hovered = hovered;
       syncDesktop(preview);
-    });
-    preview.addEventListener("pointerleave", (event) => {
+    };
+
+    hoverTarget.addEventListener("pointerenter", (event) => {
       if (event.pointerType === "touch") return;
-      state.hovered = false;
-      syncDesktop(preview);
+      setHovered(true);
     });
+    hoverTarget.addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "touch") return;
+      setHovered(false);
+    });
+    hoverTarget.addEventListener("mouseenter", () => setHovered(true));
+    hoverTarget.addEventListener("mouseleave", () => setHovered(false));
     if (link) {
       link.addEventListener("focus", () => {
         state.focused = true;
