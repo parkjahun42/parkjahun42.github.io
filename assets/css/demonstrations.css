@@ -1,0 +1,45 @@
+.jp-demos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+.jp-demo-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--jp-border);
+  border-radius: 12px;
+  background: var(--jp-surface-muted);
+}
+.jp-demo-media {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: #0d1722;
+}
+.jp-demo-media iframe, .jp-demo-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.jp-demo-media img { object-fit: cover; }
+.jp-demo-media img[src$="marc-raibert.jpg"] { object-fit: contain; }
+.jp-demo-copy { padding: 1.35rem 1.45rem 1.5rem; }
+.jp-demo-category {
+  margin: 0 0 .5rem;
+  color: var(--jp-accent);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+.jp-demo-copy h3 {
+  margin: 0 0 .55rem;
+  color: var(--jp-navy);
+  font-family: "Manrope", "Inter", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+.jp-demo-copy p:not(.jp-demo-category) { margin: 0 0 .8rem; color: var(--global-text-color-light); }
+.jp-demo-copy a { font-size: .9rem; font-weight: 600; }
+@media (max-width: 700px) {
+  .jp-demos-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
